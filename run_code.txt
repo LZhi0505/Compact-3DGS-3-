@@ -8,7 +8,7 @@ python train.py -s /media/liuzhi/b4608ade-d2e0-430d-a40b-f29a8b22cb8c/Dataset/3D
 
 --comp：在压缩后使用后处理
 --store_npz：存储 .npz 格式文件，反映真实的存储占用
---lambda_mask：掩蔽loss的权重，以控制 Gaussians masking control factor 的数量，默认为 0.01
+--lambda_mask：掩蔽loss的权重，以控制 Gaussians masking control factor 的number，默认为 0.01
 --mask_lr：masking parameter 的学习率，默认为 0.01
 --net_lr：neural field 的学习率，默认为 0.01
 --net_lr_step：训练 neural field 的Step计划，默认为 [5000, 15000, 25000]
