@@ -1,8 +1,10 @@
 # python metrics.py -m <path to trained model>
-# scene: ['kejiguan', 'wanfota', 'zhiwu', 'linggongtang', 'xiangjiadang', 'sipingguzhai']
+# scene: ['kejiguan', 'linggongtang', 'sipingguzhai', 'wanfota', 'xiangjiadang', 'zhiwu']
 
 import os
 
-for cuda, scene in enumerate(['kejiguan', 'wanfota', 'zhiwu']):
+for idx, scene in enumerate(['kejiguan', 'linggongtang', 'sipingguzhai', 'wanfota', 'xiangjiadang', 'zhiwu']):
+    print('---------------------------------------------------------------------------------')
     one_cmd = f'python metrics.py -m output/{scene}'
+    print(one_cmd)
     os.system(one_cmd)

@@ -1,10 +1,10 @@
 Running：Real-world scenes (e.g., 360, T&T, and DB)
-python train.py -s /media/liuzhi/b4608ade-d2e0-430d-a40b-f29a8b22cb8c/Dataset/3DGS_Dataset/科技馆 --model_path output/kejiguan --eval --resolution 1
-python train.py -s /media/liuzhi/b4608ade-d2e0-430d-a40b-f29a8b22cb8c/Dataset/3DGS_Dataset/凌公塘 --model_path output/linggongtang --eval --resolution 1
-python train.py -s /media/liuzhi/b4608ade-d2e0-430d-a40b-f29a8b22cb8c/Dataset/3DGS_Dataset/寺平古宅 --model_path output/sipingguzhai --eval --resolution 1
-python train.py -s /media/liuzhi/b4608ade-d2e0-430d-a40b-f29a8b22cb8c/Dataset/3DGS_Dataset/万佛塔 --model_path output/wanfota --eval --resolution 1
-python train.py -s /media/liuzhi/b4608ade-d2e0-430d-a40b-f29a8b22cb8c/Dataset/3DGS_Dataset/湘家荡 --model_path output/xiangjiadang --eval --resolution 1
-python train.py -s /media/liuzhi/b4608ade-d2e0-430d-a40b-f29a8b22cb8c/Dataset/3DGS_Dataset/植物 --model_path output/zhiwu --eval --resolution 1
+python train.py -s ../../Dataset/3DGS_Dataset/kejiguan --model_path output/kejiguan --eval --resolution 1
+python train.py -s ../../3DGS_Dataset/linggongtang --model_path output/linggongtang --eval --resolution 1
+python train.py -s ../../3DGS_Dataset/sipingguzhai --model_path output/sipingguzhai --eval --resolution 1
+python train.py -s ../../Dataset/3DGS_Dataset/wanfota --model_path output/wanfota --eval --resolution 1
+python train.py -s ../../Dataset/3DGS_Dataset/xiangjiadang --model_path output/xiangjiadang --eval --resolution 1
+python train.py -s ../../Dataset/3DGS_Dataset/zhiwu --model_path output/zhiwu --eval --resolution 1
 
 --comp：在压缩后使用后处理
 --store_npz：存储 .npz 格式文件，反映真实的存储占用

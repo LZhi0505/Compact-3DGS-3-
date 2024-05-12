@@ -1,8 +1,22 @@
-# python train.py -s /media/liuzhi/b4608ade-d2e0-430d-a40b-f29a8b22cb8c/Dataset/3DGS_Dataset/科技馆 --model_path output/kejiguan --eval --resolution 1
-# scene: {'科技馆': 'kejiguan', '万佛塔': 'wanfota', '植物': 'zhiwu', '凌公塘': 'linggongtang', '湘家荡': 'xiangjiadang', '寺平古宅': 'sipingguzhai'}
+# python train.py -s ../../Dataset/3DGS_Dataset/sipingguzhai --model_path output/sipingguzhai --resolution 1 --data_device "cuda --store_npz"
+# scene: {'kejiguan': 'cuda', 'linggongtang': 'cuda', 'sipingguzhai': 'cpu', 'wanfota': 'cuda', 'xiangjiadang': 'cuda', 'zhiwu': 'cuda'}
 
 import os
 
-for cuda, scene in enumerate({'湘家荡': 'xiangjiadang', '寺平古宅': 'sipingguzhai'}):
-    one_cmd = f'python train.py -s /media/liuzhi/b4608ade-d2e0-430d-a40b-f29a8b22cb8c/Dataset/3DGS_Dataset/{scene[0]} --model_path output/{scene[1]} --eval --resolution 1'
+for idx, scene in enumerate({'kejiguan': 'cuda', 'linggongtang': 'cuda', 'sipingguzhai': 'cpu', 'wanfota': 'cuda', 'xiangjiadang': 'cuda', 'zhiwu': 'cuda'}.items()):
+    print('---------------------------------------------------------------------------------')
+    one_cmd = f'python train.py -s ../../Dataset/3DGS_Dataset/{scene[0]} --model_path output/{scene[0]} --resolution 1 --data_device "{scene[1]}" --store_npz'
+    print(one_cmd)
+    os.system(one_cmd)
+
+for idx, scene in enumerate(['kejiguan', 'linggongtang', 'sipingguzhai', 'wanfota', 'xiangjiadang', 'zhiwu']):
+    print('---------------------------------------------------------------------------------')
+    one_cmd = f'python render.py -m output/{scene} --max_hashmap 19'
+    print(one_cmd)
+    os.system(one_cmd)
+
+for idx, scene in enumerate(['kejiguan', 'linggongtang', 'sipingguzhai', 'wanfota', 'xiangjiadang', 'zhiwu']):
+    print('---------------------------------------------------------------------------------')
+    one_cmd = f'python metrics.py -m output/{scene}'
+    print(one_cmd)
     os.system(one_cmd)

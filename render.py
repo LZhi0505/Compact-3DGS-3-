@@ -53,8 +53,10 @@ def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParam
 if __name__ == "__main__":
     # Set up command line argument parser
     parser = ArgumentParser(description="Testing script parameters")
+
     model = ModelParams(parser, sentinel=True)
     pipeline = PipelineParams(parser)
+
     parser.add_argument("--iteration", default=-1, type=int)
     parser.add_argument("--skip_train", action="store_true")
     parser.add_argument("--skip_test", action="store_true")
