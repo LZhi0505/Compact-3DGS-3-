@@ -8,11 +8,12 @@
 #
 # For inquiries contact  george.drettakis@inria.fr
 #
-
+import numpy as np
 import torch
 from scene import Scene
 import os
 from tqdm import tqdm
+from PIL import Image
 from os import makedirs
 from gaussian_renderer import render
 import torchvision
@@ -30,7 +31,12 @@ def render_set(model_path, name, iteration, views, gaussians, pipeline, backgrou
 
     for idx, view in enumerate(tqdm(views, desc="Rendering progress")):
         rendering = render(view, gaussians, pipeline, background)["render"]
-        gt = view.original_image[0:3, :, :]
+        # gt = view.original_image[0:3, :, :]
+        if not os.path.exists(view.image_path):
+            continue
+        gt = (torch.from_numpy(np.array(Image.open(view.image_path))) / 255.0).permute(2, 0, 1)
+        gt = gt.clamp(0.0, 1.0).to(view.data_device)[0:3, :, :]
+
         torchvision.utils.save_image(rendering, os.path.join(render_path, '{0:05d}'.format(idx) + ".png"))
         torchvision.utils.save_image(gt, os.path.join(gts_path, '{0:05d}'.format(idx) + ".png"))
 
